@@ -1,0 +1,14 @@
+﻿@model ICollection<FirstDbMVCApp.Models.Course>
+
+@foreach(Course c in Model){
+    <div>
+        <h3>@c.Title</h3>
+
+        <ul>
+        @foreach(Student s in c.EnrolledStudents)
+        {
+            <li>@s.FullName</li>
+        }
+        </ul>
+    </div>
+}
