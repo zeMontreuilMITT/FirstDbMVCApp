@@ -4,6 +4,7 @@ using FirstDbMVCApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FirstDbMVCApp.Migrations
 {
     [DbContext(typeof(FirstDbMVCAppContext))]
-    partial class FirstDbMVCAppContextModelSnapshot : ModelSnapshot
+    [Migration("20230811140936_CourseTitleConstraints")]
+    partial class CourseTitleConstraints
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

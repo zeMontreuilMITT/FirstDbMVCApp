@@ -7,7 +7,10 @@ builder.Services.AddDbContext<FirstDbMVCAppContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("FirstDbMVCAppContext") ?? throw new InvalidOperationException("Connection string 'FirstDbMVCAppContext' not found.")));
 
 // Add services to the container.
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews(options =>
+{
+    options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true;
+});
 
 var app = builder.Build();
 

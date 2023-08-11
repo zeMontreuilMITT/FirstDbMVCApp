@@ -1,0 +1,10 @@
+﻿@model FirstDbMVCApp.Models.ViewModels.CreateStudentVM
+
+<form asp-action="Create" method="post">
+    <label asp-for="NewStudent.FullName"></label>
+    <input asp-for="NewStudent.FullName" />
+
+    <select asp-for="SelectedCourseId" asp-items="@Model.SelectItems"></select>
+
+    <input type="submit" value="Add New Student"/>
+</form>
