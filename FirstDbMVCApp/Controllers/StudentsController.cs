@@ -32,17 +32,17 @@ namespace FirstDbMVCApp.Controllers
             // in create method, add a dropdown list of all course names
             HashSet<Course> courses = _context.Course.ToHashSet();
 
-            CreateStudentVM vm = new CreateStudentVM(courses);
-            vm.NewStudent = new Student();
+            CUStudentVM vm = new CUStudentVM(courses);
+            vm.Student = new Student();
 
             return View(vm);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateStudentVM vm)
+        public IActionResult Create(CUStudentVM vm)
         {
 
-            Student student = vm.NewStudent;
+            Student student = vm.Student;
             student.CourseId = vm.SelectedCourseId;
 
             if(ModelState.IsValid)
@@ -57,5 +57,46 @@ namespace FirstDbMVCApp.Controllers
             }
 
         }
+
+        // UPDATE
+
+        public IActionResult Edit(Guid? id)
+        {
+            if(id == null || _context.Student == null || _context.Course == null)
+            {
+                return NotFound();
+            }
+
+            Student student = _context.Student.Find(id);
+
+            if(student == null)
+            {
+                return NotFound();
+            }
+
+
+            CUStudentVM vm = new CUStudentVM(_context.Course.ToHashSet());
+            vm.SelectedCourseId = student.CourseId;
+            vm.Student = student;
+            return View(vm);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(CUStudentVM vm)
+        {
+            Student student = vm.Student;
+            student.CourseId = vm.SelectedCourseId;
+
+            if (ModelState.IsValid)
+            {
+                _context.Student.Update(student);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+            } else
+            {
+                return Problem("Error handling Student entity changes.");
+            }
+        }
+
     }
 }

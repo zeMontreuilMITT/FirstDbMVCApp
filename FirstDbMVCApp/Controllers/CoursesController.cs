@@ -88,8 +88,9 @@ namespace FirstDbMVCApp.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Title")] Course course)
+        public async Task<IActionResult> Edit(int id, [Bind("Id","Title")] Course course)
         {
+
             if (id != course.Id)
             {
                 return NotFound();

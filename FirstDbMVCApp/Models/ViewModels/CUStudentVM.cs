@@ -2,14 +2,13 @@
 
 namespace FirstDbMVCApp.Models.ViewModels
 {
-    public class CreateStudentVM
+    public class CUStudentVM
     { 
-
-        public Student? NewStudent { get; set; }
+        public Student? Student { get; set; }
         public int SelectedCourseId { get; set; }
         public List<SelectListItem> SelectItems = new List<SelectListItem>();
 
-        public CreateStudentVM(ICollection<Course> courses)
+        public CUStudentVM(ICollection<Course> courses)
         {
             foreach(Course c in courses)
             {
@@ -17,6 +16,6 @@ namespace FirstDbMVCApp.Models.ViewModels
             }
         }
 
-        public CreateStudentVM() { }
+        public CUStudentVM() { }
     }
 }

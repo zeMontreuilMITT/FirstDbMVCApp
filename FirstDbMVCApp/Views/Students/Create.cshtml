@@ -1,8 +1,8 @@
-﻿@model FirstDbMVCApp.Models.ViewModels.CreateStudentVM
+﻿@model FirstDbMVCApp.Models.ViewModels.CUStudentVM
 
 <form asp-action="Create" method="post">
-    <label asp-for="NewStudent.FullName"></label>
-    <input asp-for="NewStudent.FullName" />
+    <label asp-for="Student.FullName"></label>
+    <input asp-for="Student.FullName" />
 
     <select asp-for="SelectedCourseId" asp-items="@Model.SelectItems"></select>
 
